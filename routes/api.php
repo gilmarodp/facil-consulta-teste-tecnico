@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CidadeController;
+use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/pacientes', [PacienteController::class, 'index']);
     Route::post('/pacientes', [PacienteController::class, 'store']);
     Route::post('/pacientes/{paciente}', [PacienteController::class, 'update']);
+
+    Route::get('/consultas', [ConsultaController::class, 'index']);
+    Route::post('/medicos/consulta', [ConsultaController::class, 'store']);
 });
