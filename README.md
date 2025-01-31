@@ -1,66 +1,124 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p><a href="https://facilconsulta.com.br" target="_blank"><img src="https://facilconsulta.com.br/site/componentes/footer/assets/img/logo.png/site/componentes/footer/assets/img/logo.png" width="150" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Teste Técnico - Fácil Consulta
 
-## About Laravel
+### Descrição
+Teste técnico para a vaga de Pessoa Desenvolvedora PHP Pleno na Fácil Consulta. O teste
+consiste em criar uma API que será integrada posteriormente com um front-end densenolvido
+por outro time. O objetivo principal é testar meus conhecimentos técnicos para a vaga.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Principais Tecnologias Utilizadas
+- Laravel 11;
+- Laravel Sail;
+- MySQL 8;
+- JWT (utilizando a biblioteca tymon/jwt-auth).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Recursos da Estrutura do Projeto
+O projeto foi desenvolvido utilizando o padrão do framework Laravel da forma mais
+enxuta possível. A única adaptação foi o uso da biblioteca tymon/jwt-auth para autenticação
+de usuários com JWT (JSON Web Tokens). Os recursos utilizados foram:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- `Controllers`: contém os controladores da aplicação;
+- `Routes`: contém as rotas da aplicação;
+- `Requests`: contém as validações dos dados recebidos pela aplicação;
+- `Models`: contém os modelos da aplicação;
+- `Migrations`: contém as migrações do banco de dados;
+- `Seeders`: contém os seeders do banco de dados;
+- `Resources`: contém os recursos visuais para api da aplicação;
 
-## Learning Laravel
+### Instalação
+Finalmente, para fazer a instalação do projeto em sua máquina, siga os passos abaixo:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Clone o repositório:
+```bash
+git clone https://github.com/gilmarodp/facil-consulta-teste-tecnico.git
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Entre na pasta do projeto:
+```bash
+cd facil-consulta-teste-tecnico
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. Instale as dependências do projeto:
+```bash
+composer install
+```
 
-## Laravel Sponsors
+4. Copie o arquivo `.env.example` para `.env`:
+```bash
+cp .env.example .env
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+5. Gere a chave da aplicação:
+```bash
+php artisan key:generate
+```
 
-### Premium Partners
+6. Suba o container do Docker:
+```bash
+./vendor/bin/sail up -d
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+7. Execute as migrações do banco de dados:
+```bash
+./vendor/bin/sail artisan migrate
+```
 
-## Contributing
+8. Execute os seeders do banco de dados:
+```bash
+./vendor/bin/sail artisan db:seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+9. Acesse a aplicação no postman ou no navegador:
+```bash
+http://127.0.0.1
+```
 
-## Code of Conduct
+### Rotas da Aplicação
+A aplicação possui as seguintes rotas:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Rotas públicas**:
+- `POST /api/login`: rota para autenticação de usuários;
+- `GET /api/cidades`: rota para exibir todas as cidades cadastradas;
+- `GET /api/medicos`: rota para exibir todos os médicos cadastrados;
+- `GET /api/cidades/{id_cidade}/medicos`: rota para exibir todos os médicos cadastrados em uma cidade específica;
 
-## Security Vulnerabilities
+**Rotas protegidas (precisa de autenticação JWT)**:
+- `GET /api/user`: rota para exibir os dados do usuário autenticado;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+- `POST /api/medicos`: rota para cadastrar um médico;
+- `POST /api/medicos/consulta`: rota para agendar uma consulta;
+- `GET /api/medicos/{id_medico}/pacientes`: rota para exibir todos os pacientes cadastrados em um médico específico;
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+- `GET /api/pacientes`: rota para exibir todos os pacientes cadastrados;
+- `POST /api/pacientes`: rota para cadastrar um paciente;
+- `POST /api/pacientes/{id_paciente}`: rota para atualizar um paciente;
+
+
+- `GET /api/consultas`: rota para exibir todas as consultas cadastradas;
+
+
+### Credenciais de Acesso
+Para acessar as rotas protegidas, utilize as seguintes credenciais:
+```
+E-mail: christian.ramires@example.com
+Senha: password
+
+Ou
+
+E-mail: admin@email.com
+Senha: password
+```
+
+### Considerações Importantes
+Para acessar as rotas protegidas, é necessário enviar o token JWT no cabeçalho da requisição.
+O token JWT é gerado ao fazer login na rota `/api/login`. O token JWT deve ser enviado no
+cabeçalho da requisição com a chave `Authorization` e o valor `Bearer {token}`.
+
+### Considerações Finais
+Segui as instruções do teste técnico da melhor forma possível, utilizando o framework Laravel
+da forma mais enxuta possível. Me senti tentado a adicionar mais recursos, mas preferi seguir
+o que foi solicitado. Agradeço a oportunidade de participar do processo seletivo e
+fico à disposição para maiores esclarecimentos.
