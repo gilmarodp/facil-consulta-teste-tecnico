@@ -28,5 +28,8 @@ class DatabaseSeeder extends Seeder
 
         // cria alguns médicos
         $this->call(MedicoSeeder::class);
+
+        // cria alguns pacientes
+        $this->call(PacienteSeeder::class);
     }
 }

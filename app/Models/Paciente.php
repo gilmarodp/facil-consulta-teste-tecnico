@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Cidade extends Model
+class Paciente extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['nome', 'estado'];
+    protected $fillable = ['nome', 'cpf', 'celular'];
 }
