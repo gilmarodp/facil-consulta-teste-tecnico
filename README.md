@@ -54,25 +54,28 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-6. Suba o container do Docker:
+6. Gere a chave secreta para o JWT:
+```bash
+php artisan jwt:secret
+```
+
+7. Suba o container do Docker:
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-7. Execute as migrações do banco de dados:
+8. Execute as migrações do banco de dados:
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-8. Execute os seeders do banco de dados:
+9. Execute os seeders do banco de dados:
 ```bash
 ./vendor/bin/sail artisan db:seed
 ```
 
-9. Acesse a aplicação no postman ou no navegador:
-```bash
+10. Acesse a aplicação no postman ou no navegador:
 http://127.0.0.1
-```
 
 ### Rotas da Aplicação
 A aplicação possui as seguintes rotas:
