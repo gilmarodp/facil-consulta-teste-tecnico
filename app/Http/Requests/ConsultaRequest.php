@@ -24,7 +24,7 @@ class ConsultaRequest extends FormRequest
         return [
             'paciente_id' => ['required', 'exists:pacientes,id'],
             'medico_id' => ['required', 'exists:medicos,id'],
-            'data' => ['required', 'date_format:Y-m-d H:i:s', 'after:now'],
+            'data' => ['required', 'date_format:Y-m-d H:i:s'],
         ];
     }
 
@@ -42,7 +42,6 @@ class ConsultaRequest extends FormRequest
             'medico_id.exists' => 'O médico informado não existe.',
             'data.required' => 'O campo data é obrigatório.',
             'data.date_format' => 'O campo data deve ser uma data válida no formato Y-m-d H:i:s.',
-            'data.after' => 'O campo data deve ser uma data futura.',
         ];
     }
 }

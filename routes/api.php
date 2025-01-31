@@ -12,7 +12,6 @@ Route::get('/cidades', [CidadeController::class, 'index']);
 Route::get('/medicos', [MedicoController::class, 'index']);
 Route::get('/cidades/{cidade}/medicos', [MedicoController::class, 'index']);
 
-
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
 
@@ -21,6 +20,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/pacientes', [PacienteController::class, 'index']);
     Route::post('/pacientes', [PacienteController::class, 'store']);
     Route::post('/pacientes/{paciente}', [PacienteController::class, 'update']);
+    Route::get('/medicos/{medico}/pacientes', [PacienteController::class, 'pacientesPorMedico']);
 
     Route::get('/consultas', [ConsultaController::class, 'index']);
     Route::post('/medicos/consulta', [ConsultaController::class, 'store']);

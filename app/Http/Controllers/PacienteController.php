@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PacienteRequest;
+use App\Http\Resources\PacienteConsultaResource;
 use App\Http\Resources\PacienteResource;
+use App\Models\Medico;
 use App\Models\Paciente;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -29,10 +31,28 @@ class PacienteController extends Controller
         return response()->json(new PacienteResource($paciente), 201);
     }
 
-    public function update(Paciente $paciente, PacienteRequest $request): JsonResponse
+    public function update(PacienteRequest $request, Paciente $paciente): JsonResponse
     {
-        $paciente->update($request->only(['nome', 'celular']));
+        $paciente->update($request->validated());
 
         return response()->json(new PacienteResource($paciente));
+    }
+
+    public function pacientesPorMedico(Request $request, Medico $medico): JsonResponse
+    {
+        $pacientes = Paciente::query()
+            ->whereHas('consultas', function ($q) use ($request, $medico) {
+                $q->where('medico_id', $medico->id)
+                    ->when($request->get('apenas-agendadas') === true, function ($q) use ($request) {
+                        $q->where('data', '>', now()->format('Y-m-d H:i:s'));
+                    });
+            })
+            ->when($request->has('nome'), function ($q) use ($request) {
+                $q->where('nome', 'LIKE', "%{$request->nome}%");
+            })
+            ->get()
+            ->sortBy('consulta.data');
+
+        return response()->json(PacienteConsultaResource::collection($pacientes));
     }
 }
