@@ -1,4 +1,4 @@
-<p><a href="https://facilconsulta.com.br" target="_blank"><img src="https://facilconsulta.com.br/site/componentes/footer/assets/img/logo.png/site/componentes/footer/assets/img/logo.png" width="150" alt="Laravel Logo"></a></p>
+<p><a href="https://facilconsulta.com.br" target="_blank"><img src="https://facilconsulta.com.br/site/componentes/footer/assets/img/logo.png" width="150" alt="Fácil Consulta Logo"></a></p>
 
 ## Teste Técnico - Fácil Consulta
 
