@@ -35,7 +35,7 @@ class PacienteController extends Controller
     {
         $paciente->update($request->validated());
 
-        return response()->json(new PacienteResource($paciente));
+        return response()->json($paciente->only('nome', 'celular'));
     }
 
     public function pacientesPorMedico(Request $request, Medico $medico): JsonResponse
@@ -43,7 +43,7 @@ class PacienteController extends Controller
         $pacientes = Paciente::query()
             ->whereHas('consultas', function ($q) use ($request, $medico) {
                 $q->where('medico_id', $medico->id)
-                    ->when($request->get('apenas-agendadas') === true, function ($q) use ($request) {
+                    ->when($request->boolean('apenas-agendadas'), function ($q) use ($request) {
                         $q->where('data', '>', now()->format('Y-m-d H:i:s'));
                     });
             })

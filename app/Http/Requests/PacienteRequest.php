@@ -14,6 +14,13 @@ class PacienteRequest extends FormRequest
         return auth()->check();
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'celular' => preg_replace('/\s+/', '', $this->celular),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -26,7 +33,7 @@ class PacienteRequest extends FormRequest
             'celular' => 'required|string|max:20|celular_com_ddd',
         ];
 
-        if ($this->method() === 'POST' && !$this->route('paciente')) {
+        if ($this->method() === 'POST') {
             $rules['cpf'] = 'required|string|max:20|cpf|formato_cpf|unique:pacientes,cpf';
         }
 

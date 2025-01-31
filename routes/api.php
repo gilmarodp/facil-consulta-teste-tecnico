@@ -14,12 +14,13 @@ Route::get('/cidades/{cidade}/medicos', [MedicoController::class, 'index']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::post('/medicos', [MedicoController::class, 'store']);
 
     Route::get('/pacientes', [PacienteController::class, 'index']);
     Route::post('/pacientes', [PacienteController::class, 'store']);
-    Route::post('/pacientes/{paciente}', [PacienteController::class, 'update']);
+    Route::put('/pacientes/{paciente}', [PacienteController::class, 'update']);
     Route::get('/medicos/{medico}/pacientes', [PacienteController::class, 'pacientesPorMedico']);
 
     Route::get('/consultas', [ConsultaController::class, 'index']);
