@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
 
         // cria algumas cidades
         $this->call(CidadeSeeder::class);
+
+        // cria alguns médicos
+        $this->call(MedicoSeeder::class);
     }
 }
