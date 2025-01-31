@@ -74,34 +74,40 @@ php artisan jwt:secret
 ./vendor/bin/sail artisan db:seed
 ```
 
-10. Acesse a aplicação no postman ou no navegador:
-http://127.0.0.1
+10. Teste a aplicação no Postman:
+
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://nova-versao-fc-teste.postman.co/workspace/Teste-Facil-Consulta~8e0c2ff7-b96f-46ad-9b34-d92e10ab9438/collection/23818071-1ee3f4ef-d351-45e2-a38f-1b4940c3ad58?action=share&creator=23818071)
+
+11. Acesse a aplicação no postman ou no navegador:
+- http://127.0.0.1
 
 ### Rotas da Aplicação
 A aplicação possui as seguintes rotas:
 
-**Rotas públicas**:
+**Autenticação**:
 - `POST /api/login`: rota para autenticação de usuários;
-- `GET /api/cidades`: rota para exibir todas as cidades cadastradas;
-- `GET /api/medicos`: rota para exibir todos os médicos cadastrados;
-- `GET /api/cidades/{id_cidade}/medicos`: rota para exibir todos os médicos cadastrados em uma cidade específica;
-
-**Rotas protegidas (precisa de autenticação JWT)**:
 - `GET /api/user`: rota para exibir os dados do usuário autenticado;
 
+**Cidades**:
+- `GET /api/cidades`: rota para exibir todas as cidades cadastradas;
 
+**Médicos**:
+- `GET /api/medicos`: rota para exibir todos os médicos cadastrados;
+- `GET /api/cidades/{id_cidade}/medicos`: rota para exibir todos os médicos cadastrados em uma cidade específica;
 - `POST /api/medicos`: rota para cadastrar um médico;
-- `POST /api/medicos/consulta`: rota para agendar uma consulta;
+
+**Pacientes**:
+- `POST /api/pacientes`: rota para cadastrar um paciente;
+- `PUT /api/pacientes/{id_paciente}`: rota para atualizar um paciente;
 - `GET /api/medicos/{id_medico}/pacientes`: rota para exibir todos os pacientes cadastrados em um médico específico;
 
+**Consultas**:
+- `POST /api/medicos/consulta`: rota para agendar uma consulta;
 
-- `GET /api/pacientes`: rota para exibir todos os pacientes cadastrados;
-- `POST /api/pacientes`: rota para cadastrar um paciente;
-- `POST /api/pacientes/{id_paciente}`: rota para atualizar um paciente;
-
-
+**Endpoints além dos solicitados**:
 - `GET /api/consultas`: rota para exibir todas as consultas cadastradas;
-
+- `GET /api/pacientes`: rota para exibir todos os pacientes cadastrados;
+- `POST /api/logout`: rota para deslogar o usuário autenticado;
 
 ### Credenciais de Acesso
 Para acessar as rotas protegidas, utilize as seguintes credenciais:
